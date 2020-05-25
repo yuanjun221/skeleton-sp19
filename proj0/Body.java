@@ -143,4 +143,19 @@ public class Body {
 		}
 		return netForceY;
 	}
+
+	/**
+	 * Update the velocity and position by a given time and force in both x and y direction
+	 * @param dt	a period of time
+	 * @param fx	force exerted in x direction
+	 * @param fy	force exerted in y direction
+	 */
+	public void update(double dt, double fx, double fy) {
+		double ax = fx / mass;
+		double ay = fy / mass;
+		xxVel += dt * ax;
+		yyVel += dt * ay;
+		xxPos += dt * xxVel;
+		yyPos += dt * yyVel;
+	}
 }
