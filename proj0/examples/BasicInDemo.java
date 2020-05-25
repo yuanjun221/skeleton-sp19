@@ -2,8 +2,7 @@
 public class BasicInDemo {
 	public static void main(String[] args) {
 		In in = new In("BasicInDemo_input_file.txt");
-
-		/* Every time you call a read method from the In class,
+		/** Every time you call a read method from the In class,
 		 * it reads the next thing from the file, assuming it is
 		 * of the specified type. */
 
