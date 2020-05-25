@@ -77,7 +77,6 @@ public class Body {
 	public double calcDistance(Body b) {
 		double xxSquare = Math.pow(b.xxPos - xxPos, 2);
 		double yySquare = Math.pow(b.yyPos - yyPos, 2);
-
 		return Math.sqrt(xxSquare + yySquare);
 	}
 
@@ -113,5 +112,35 @@ public class Body {
 		double distance = calcDistance(b);
 		double force = calcForceExertedBy(b);
 		return force * vecDistanceY / distance;
+	}
+
+	/**
+	 * Calculates the net force in X direction exerted on this Body instance by all bodies in the array
+	 * @param bodies	a given array holds all the Body instances
+	 * @return			the net force exerted in the X direction
+	 */
+	public double calcNetForceExertedByX(Body[] bodies) {
+		double netForceX = 0.0;
+		for (Body b : bodies) {
+			if (!b.equals(this)) {
+				netForceX += this.calcForceExertedByX(b);
+			}
+		}
+		return netForceX;
+	}
+
+	/**
+	 * Calculates the net force in Y direction exerted on this Body instance by all bodies in the array
+	 * @param bodies	a given array holds all the Body instances
+	 * @return			the net force exerted in the Y direction
+	 */
+	public double calcNetForceExertedByY(Body[] bodies) {
+		double netForceY = 0.0;
+		for (Body b : bodies) {
+			if (!b.equals(this)) {
+				netForceY += this.calcForceExertedByY(b);
+			}
+		}
+		return netForceY;
 	}
 }
