@@ -29,4 +29,11 @@ public class Body {
 		mass = b.mass;
 		imgFileName = b.imgFileName;
 	}
+
+	public double calcDistance(Body b) {
+		double xxSquare = Math.pow(b.xxPos - xxPos, 2);
+		double yySquare = Math.pow(b.yyPos - yyPos, 2);
+
+		return Math.sqrt(xxSquare + yySquare);
+	}
 }
