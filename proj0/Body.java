@@ -84,10 +84,34 @@ public class Body {
 	/**
 	 * Calculates the force exerted on this Body isntance by a given Body instance
 	 * @param b		a given Body instance
-	 * @return		the force exerted on this Body instance by the given Body instance
+	 * @return		the total force exerted on this Body instance by the given Body instance
 	 */
 	public double calcForceExertedBy(Body b) {
 		double distance = calcDistance(b);
 		return G * mass * b.mass / Math.pow(distance, 2);
+	}
+
+	/**
+	 * Calculates the force exerted on this Body instance by a given Body instance in X direction
+	 * @param b		a given Body instance
+	 * @return		the force exerted in the X direction
+	 */
+	public double calcForceExertedByX(Body b) {
+		double vecDistanceX = b.xxPos - xxPos;
+		double distance = calcDistance(b);
+		double force = calcForceExertedBy(b);
+		return force * vecDistanceX / distance;
+	}
+
+	/**
+	 * Calculates the force exerted on this Body instance by a given Body instance in Y direction
+	 * @param b		a given Body instance
+	 * @return		the force exerted in the Y direction
+	 */
+	public double calcForceExertedByY(Body b) {
+		double vecDistanceY = b.yyPos - yyPos;
+		double distance = calcDistance(b);
+		double force = calcForceExertedBy(b);
+		return force * vecDistanceY / distance;
 	}
 }
