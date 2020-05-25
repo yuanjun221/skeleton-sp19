@@ -36,4 +36,10 @@ public class Body {
 
 		return Math.sqrt(xxSquare + yySquare);
 	}
+
+	public double calcForceExertedBy(Body b) {
+		double G = 6.67e-11;
+		double distance = calcDistance(b);
+		return G * mass * b.mass / Math.pow(distance, 2);
+	}
 }
