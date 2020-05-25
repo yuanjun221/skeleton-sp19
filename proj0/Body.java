@@ -1,4 +1,7 @@
 public class Body {
+	/** constant value G */
+	public static final double G = 6.67e-11;
+
 	/** Its current x position */
 	public double xxPos;
 	/** Its current y position */
@@ -38,7 +41,6 @@ public class Body {
 	}
 
 	public double calcForceExertedBy(Body b) {
-		double G = 6.67e-11;
 		double distance = calcDistance(b);
 		return G * mass * b.mass / Math.pow(distance, 2);
 	}
