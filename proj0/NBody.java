@@ -5,19 +5,23 @@
 public class NBody {
 	public static String backgroundImage = "/images/starfield.jpg";
 	public static void main(String[] args) {
-		double T = Integer.parseInt(args[0]);
-		double dt = Integer.parseInt(args[1]);
+		double T = Double.parseDouble(args[0]);
+		double dt = Double.parseDouble(args[1]);
 		String filename = args[2];
 		Body[] bodies = readBodies(filename);
 		double radius = readRadius(filename);
 
-		StdDraw.enableDoubleBuffering();
+		//StdDraw.enableDoubleBuffering();
 		StdDraw.setScale(-radius, radius);
 		StdDraw.clear();
-		StdDraw.picture(-radius, -radius, backgroundImage);
+		StdDraw.picture(0, 0, backgroundImage);
 
-		StdDraw.show();
-		StdDraw.pause(2000);
+		for (Body b : bodies) {
+			b.draw();
+		}
+
+		//StdDraw.show();
+		//StdDraw.pause(2000);
 	}
 
 	/**

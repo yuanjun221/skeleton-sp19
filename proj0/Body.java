@@ -158,4 +158,11 @@ public class Body {
 		xxPos += dt * xxVel;
 		yyPos += dt * yyVel;
 	}
+
+	/**
+	 * Draw the Body's image at the Body's position
+	 */
+	public void draw() {
+		StdDraw.picture(xxPos, yyPos, "images/" + imgFileName);
+	}
 }
