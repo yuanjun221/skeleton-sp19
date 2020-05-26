@@ -3,6 +3,23 @@
  */
 
 public class NBody {
+	public static String backgroundImage = "/images/starfield.jpg";
+	public static void main(String[] args) {
+		double T = Integer.parseInt(args[0]);
+		double dt = Integer.parseInt(args[1]);
+		String filename = args[2];
+		Body[] bodies = readBodies(filename);
+		double radius = readRadius(filename);
+
+		StdDraw.enableDoubleBuffering();
+		StdDraw.setScale(-radius, radius);
+		StdDraw.clear();
+		StdDraw.picture(-radius, -radius, backgroundImage);
+
+		StdDraw.show();
+		StdDraw.pause(2000);
+	}
+
 	/**
 	 * Read radius from a given file
 	 * @param fileName		a string represent the directory with the file name
@@ -23,7 +40,7 @@ public class NBody {
 		In in = new In(fileName);
 		int count = in.readInt();
 		in.readDouble();
-		Body[] bList = new Body[count];
+		Body[] bodies = new Body[count];
 
 		for (int i = 0; i < count; i++) {
 			double xxPos = in.readDouble();
@@ -32,8 +49,8 @@ public class NBody {
 			double yyVel = in.readDouble();
 			double mass = in.readDouble();
 			String imageFilePath = in.readString();
-			bList[i] = new Body(xxPos, yyPos, xxVel, yyVel, mass, imageFilePath);
+			bodies[i] = new Body(xxPos, yyPos, xxVel, yyVel, mass, imageFilePath);
 		}
-		return bList;
+		return bodies;
 	}
 }
