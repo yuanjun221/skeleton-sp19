@@ -151,7 +151,7 @@ public class LinkedListDeque<T> {
      * @return  the item at the given index, null if no such item existed
      */
     public T get(int index) {
-        if (size == 0) {
+        if (isEmpty()) {
             return null;
         }
         /*
@@ -179,7 +179,7 @@ public class LinkedListDeque<T> {
      * @return  the item at the given index, null if no such item existed
      */
     public T getRecursive(int index) {
-        if (size == 0) {
+        if (isEmpty()) {
             return null;
         }
         if (index <= size / 2) {
