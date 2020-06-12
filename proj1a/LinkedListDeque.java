@@ -8,17 +8,16 @@ public class LinkedListDeque<T> {
      * @param <T>   generic type
      */
     private static class Node<T> {
-        public Node<T> prev;
         public T item;
+        public Node<T> prev;
         public Node<T> next;
 
         public Node() {}
-        public Node(T i, Node<T> n) {
+        
+        public Node(T i, Node<T> p, Node<T> n) {
             item = i;
+            prev = p;
             next = n;
-            if (n != null) {
-                n.prev = this;
-            }
         }
     }
 
@@ -64,10 +63,9 @@ public class LinkedListDeque<T> {
      */
     public void addFirst(T item) {
         size++;
-        Node<T> newNode = new Node<>(item, sentinel.next);
+        Node<T> newNode = new Node<>(item, sentinel, sentinel.next);
         sentinel.next.prev = newNode;
         sentinel.next = newNode;
-        newNode.prev = sentinel;
     }
 
     /**
@@ -76,8 +74,7 @@ public class LinkedListDeque<T> {
      */
     public void addLast(T item) {
         size++;
-        Node<T> newNode = new Node<>(item, sentinel);
-        newNode.prev = sentinel.prev;
+        Node<T> newNode = new Node<>(item, sentinel.prev, sentinel);
         sentinel.prev.next = newNode;
         sentinel.prev = newNode;
     }
