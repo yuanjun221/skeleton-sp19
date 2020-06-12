@@ -13,7 +13,7 @@ public class LinkedListDeque<T> {
         public Node<T> next;
 
         public Node() {}
-        
+
         public Node(T i, Node<T> p, Node<T> n) {
             item = i;
             prev = p;
@@ -99,16 +99,12 @@ public class LinkedListDeque<T> {
      * Prints the items in the deque from first to last.
      */
     public void printDeque() {
-        if (sentinel.next == sentinel) {
-            System.out.println("There is no item in the deque.");
-        } else {
-            Node<T> n = sentinel;
-            while (n.next != sentinel) {
-                System.out.println(n.next.item.toString() + " ");
-                n = n.next;
-            }
-            System.out.println();
+        Node<T> n = sentinel.next;
+        for (int i = 0; i < size; i++) {
+            System.out.print(n.item + " ");
+            n = n.next;
         }
+        System.out.println();
     }
 
     /**
