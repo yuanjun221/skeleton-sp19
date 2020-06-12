@@ -12,8 +12,6 @@ public class LinkedListDeque<T> {
         public Node<T> prev;
         public Node<T> next;
 
-        public Node() {}
-
         public Node(T i, Node<T> p, Node<T> n) {
             item = i;
             prev = p;
@@ -36,7 +34,7 @@ public class LinkedListDeque<T> {
      * Default Constructor.
      */
     public LinkedListDeque() {
-        sentinel = new Node<>();
+        sentinel = new Node<>(null, null, null);
         sentinel.prev = sentinel;
         sentinel.next = sentinel;
         size = 0;
@@ -47,7 +45,7 @@ public class LinkedListDeque<T> {
      * @param other another deque to be copied
      */
     public LinkedListDeque(LinkedListDeque other) {
-        sentinel = new Node<>();
+        sentinel = new Node<>(null,null,null);
         sentinel.prev = sentinel;
         sentinel.next = sentinel;
         size = 0;
