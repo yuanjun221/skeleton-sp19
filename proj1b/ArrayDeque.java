@@ -1,5 +1,7 @@
 /**
  * Class ArrayDeque.
+ * This class defines a deque to hold a given type objects.
+ * It gives methods to manipulate the objects of the deque.
  * @param <T>   generic type
  */
 public class ArrayDeque<T> implements Deque<T> {
