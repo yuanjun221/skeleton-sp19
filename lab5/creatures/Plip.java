@@ -31,6 +31,11 @@ public class Plip extends Creature {
     private int b;
 
     /**
+     * the probability of action move.
+     */
+    private final double moveProbability = 0.5;
+
+    /**
      * creates plip with energy equal to E.
      */
     public Plip(double e) {
@@ -56,8 +61,11 @@ public class Plip extends Creature {
      * linearly in between these two extremes. It's not absolutely vital
      * that you get this exactly correct.
      */
+    @Override
     public Color color() {
-        g = 63;
+        r = 99;
+        b = 76;
+        g = (int) (96 * energy + 63);
         return color(r, g, b);
     }
 
@@ -74,7 +82,11 @@ public class Plip extends Creature {
      * private static final variable. This is not required for this lab.
      */
     public void move() {
-        // TODO
+        if (energy - 0.15 < 0) {
+            energy = 0;
+        } else {
+            energy -= 0.15;
+        }
     }
 
 
@@ -82,7 +94,12 @@ public class Plip extends Creature {
      * Plips gain 0.2 energy when staying due to photosynthesis.
      */
     public void stay() {
-        // TODO
+        if (energy + 0.2 > 2) {
+            energy = 2;
+        } else {
+            energy += 0.2;
+        }
+
     }
 
     /**
@@ -91,7 +108,8 @@ public class Plip extends Creature {
      * Plip.
      */
     public Plip replicate() {
-        return this;
+        this.energy = this.energy / 2;
+        return new Plip(this.energy);
     }
 
     /**
@@ -108,23 +126,42 @@ public class Plip extends Creature {
      * for an example to follow.
      */
     public Action chooseAction(Map<Direction, Occupant> neighbors) {
-        // Rule 1
+
         Deque<Direction> emptyNeighbors = new ArrayDeque<>();
         boolean anyClorus = false;
-        // TODO
-        // (Google: Enhanced for-loop over keys of NEIGHBORS?)
-        // for () {...}
 
-        if (false) { // FIXME
-            // TODO
+        for (Map.Entry<Direction, Occupant> entry : neighbors.entrySet()) {
+            if (entry.getValue().name().equals("empty")) {
+                emptyNeighbors.add(entry.getKey());
+            }
+            if (entry.getValue().name().equals("clorus")) {
+                anyClorus = true;
+            }
         }
 
-        // Rule 2
-        // HINT: randomEntry(emptyNeighbors)
+        // Rule 1 : If there are no empty spaces, the Plip should STAY.
+        if (emptyNeighbors.isEmpty()) {
+            return new Action(Action.ActionType.STAY);
+        }
+
+        // Rule 2 : to replicate to an available space
+        if (energy >= 1.0) {
+            Direction randomDirection = randomEntry(emptyNeighbors);
+            return new Action(Action.ActionType.REPLICATE, randomDirection);
+        }
 
         // Rule 3
+        if (anyClorus && Math.random() < moveProbability) {
+            Direction randomDirection = randomEntry(emptyNeighbors);
+            return new Action(Action.ActionType.MOVE, randomDirection);
+        }
 
         // Rule 4
         return new Action(Action.ActionType.STAY);
+    }
+
+    private Direction randomEntry(Deque<Direction> neighbors) {
+        int num = (int) (Math.random() * neighbors.size());
+        return (Direction) neighbors.toArray()[num];
     }
 }
