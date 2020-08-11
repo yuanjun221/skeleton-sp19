@@ -7,23 +7,26 @@ Q: Give an example of at least one idea from the staff solution that would have 
 A: 
 
 Q: What's something you felt proud of in your code, if anything?
+	All critical methods have been documented.
+	The core alogrithm in finding a specific index is simple, elegant, efficient, and easy to understand.
 
 A:
 
 Q: What's something that was particularly inelegant in your code, if anything?
-
+	I don't think there is one.
 A:
 
 Q: What did you learn by talking to your partner about writing ArrayDeque?
-
+	
 A:
 
 Q: What do you wish you would have known before writing ArrayDeque, if anything?
-
+	The core algorithm in finding a specific index in a array. It's difficult to self-conculude
+	at the first stage.
 A:
 
 Q: If you wrote ArrayDeque again, what would you do differently, if anything?
-
+	There will be no any vital change, but may be something tiny optimization.
 A:
 
 -----
@@ -35,23 +38,24 @@ Q: Give an example of at least one idea from the staff solution that would have 
 A: 
 
 Q: What's something you felt proud of in your code, if anything?
+	All alogrithm is builded by myself. Also, I built an alogrithm in looping through the entire list with time consumption redeuced to half.
 
 A:
 
 Q: What's something that was particularly inelegant in your code, if anything?
-
+	I don't think there is one.
 A:
 
 Q: What did you learn by talking to your partner about writing LinkedListDeque?
-
+	
 A:
 
 Q: What do you wish you would have known before writing LinkedListDeque, if anything?
-
+	Nothing special I think.
 A:
 
 Q: If you wrote LinkedListDeque again, what would you do differently, if anything?
-
+	
 A:
 
 -----
